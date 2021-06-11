@@ -1,25 +1,41 @@
 extends Control
 
-onready var tree_node = get_node("Tree")
+
+# Define node
+onready var tree = get_node("Tree")
+
 
 func _ready():
-	var root = tree_node.create_item()
+	# Create root tree
+	var root = tree.create_item()
 	
-	tree_node.set_columns(2)
-	tree_node.set_column_titles_visible(true)
+	# Hide root tree
+	tree.set_hide_root(false)
+	# Hide folding arrow
+	tree.set_hide_folding(false)
 	
-	tree_node.set_column_title(0, "Column Title 1")
-	tree_node.set_column_title(1, "Column Title 2")
+	# Set column count
+	tree.set_columns(2)
+	# Enable column titles
+	tree.set_column_titles_visible(true)
 	
+	#Set column title
+	tree.set_column_title(0, "Column Title 1")
+	tree.set_column_title(1, "Column Title 2")
+	
+	# Set root text (hidden if set_hide_root = true)
 	root.set_text(0, "Root 1")
-	#tree_node.set_hide_root(false)
 	root.set_text(1, "Root 2")
 	
-	var child1 = tree_node.create_item(root)
-	child1.set_text(0, "Child 1")
+	# Create first childs
+	var child1 = tree.create_item(root)
+	child1.set_text(0, "Child 1-1")
+	child1.set_text(1, "Child 2-1")
 	
-	var child2 = tree_node.create_item(root)
-	child2.set_text(0, "Child 2")
+	# Create second child
+	var child2 = tree.create_item(root)
+	child2.set_text(0, "Child 1-2")
 	
-	var subchild1 = tree_node.create_item(child1)
+	# Create child1's subchild
+	var subchild1 = tree.create_item(child1)
 	subchild1.set_text(0, "Subchild1")
