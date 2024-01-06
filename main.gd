@@ -2,7 +2,7 @@ extends Control
 
 
 # Define node
-onready var tree = get_node("Tree")
+@onready var tree = get_node("Tree")
 
 
 func _ready():
